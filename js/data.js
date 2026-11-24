@@ -10,10 +10,10 @@ const PROFILE = {
   status: "Open to full-time roles starting January 2027",
   location: "Boston, MA",
   email: "sanjanasanjeev118@gmail.com",
-  linkedin: "https://www.linkedin.com/in/your-handle", // TODO: your LinkedIn URL
+  linkedin: "https://www.linkedin.com/in/sanjana-sanjeev-kumar/",
   github: "https://github.com/Sanjask",
   resume: "resume.pdf", // TODO: add resume.pdf to the repo root
-  skills: ["TypeScript", "React / React Native", "Node.js", "Go", "Python", "PostgreSQL", "Supabase", "Docker", "GitHub Actions", "PyTorch", "LLM serving", "LoRA / QLoRA"],
+  roles: ["Software Engineer", "Product Engineer", "ML Engineer"],
 };
 
 /* Two experience groups, each shown as a dropdown */
@@ -25,7 +25,7 @@ const EXPERIENCE = [
     open: false,
     roles: [
       {
-        org: "BU Spark!", role: "Software Engineer", when: "Sep 2026 to Present", where: "Boston, US", mark: "#ffd6e0",
+        org: "BU Spark!", logo: "https://www.google.com/s2/favicons?domain=bu.edu&sz=128", role: "Software Engineer", when: "Sep 2026 to Present", where: "Boston, US", mark: "#ffd6e0",
         points: [
           "Built a React Native and Supabase emergency app for BU Campus Planning and Operations, working directly with the client and UX team to cut the path to the right safety instructions from 6 clicks to 2.",
           "Implemented geofencing-based location detection to show nearby emergencies and the closest of 122 campus AEDs, falling back to the last known position after a 10 second GPS timeout.",
@@ -34,7 +34,7 @@ const EXPERIENCE = [
         stack: ["React Native", "Expo", "Supabase", "PostgreSQL", "GitHub Actions"],
       },
       {
-        org: "NVIDIA x SIT AI Center", role: "Software Engineer Intern, AI Agents", when: "Jun 2026 to Aug 2026", where: "Remote", mark: "#d7f5e6",
+        org: "NVIDIA x SIT AI Center", logo: "img/logos/nvidia.svg", role: "Software Engineer Intern, AI Agents", when: "Jun 2026 to Aug 2026", where: "Remote", mark: "#d7f5e6",
         points: [
           "Engineered a KV cache reuse and fusion pipeline for concurrent multi-agent LLM serving that recomputes under 15% of token KV states and overlaps GPU cache loading with recomputation to hide latency.",
           "Designed an adaptive controller that sets per-request recompute ratios from KV divergence signals, cutting time to first token 4× from 565ms to 143ms and raising throughput 2.8 to 5× with no quality loss.",
@@ -43,7 +43,7 @@ const EXPERIENCE = [
         stack: ["Python", "PyTorch", "LLM serving", "GPU"],
       },
       {
-        org: "National University of Singapore", role: "Software Engineer Intern", when: "Dec 2024 to May 2025", where: "Singapore", mark: "#d8e9ff",
+        org: "National University of Singapore", logo: "https://www.google.com/s2/favicons?domain=nus.edu.sg&sz=128", role: "Software Engineer Intern", when: "Dec 2024 to May 2025", where: "Singapore", mark: "#d8e9ff",
         points: [
           "Worked on an autonomous LLM agent for code repair that pairs GPT-4 with AST code search and iterative context retrieval, cutting LLM cost per task by 83% from $2.51 to $0.43.",
           "Engineered prompt pipelines that feed spectrum-based fault localization signals into the LLM context, raising the issue resolution rate to 19% on SWE-bench Lite and outperforming SWE-agent.",
@@ -60,7 +60,7 @@ const EXPERIENCE = [
         stack: ["React", "SQL", "REST APIs"],
       },
       {
-        org: "Avanceon", role: "Software Engineering Intern", when: "Dec 2023 to Jan 2024", where: "Doha, Qatar", mark: "#ece6ff",
+        org: "Avanceon", logo: "https://www.google.com/s2/favicons?domain=avanceon.com&sz=128", role: "Software Engineering Intern", when: "Dec 2023 to Jan 2024", where: "Doha, Qatar", mark: "#ece6ff",
         points: [
           "Built Python and SQL data processing for Qatar Metro signal data.", // TODO: add more detail
         ],
@@ -75,7 +75,7 @@ const EXPERIENCE = [
     open: false,
     roles: [
       {
-        org: "Image & Video Computing Group, Boston University", role: "Machine Learning Researcher", when: "Aug 2026 to Present", where: "Boston, US", mark: "#ffe0cc",
+        org: "Image & Video Computing Group, Boston University", logo: "https://www.google.com/s2/favicons?domain=bu.edu&sz=128", role: "Machine Learning Researcher", when: "Aug 2026 to Present", where: "Boston, US", mark: "#ffe0cc",
         points: [
           "Investigating whether omnimodal LLMs can imagine audio cues from visual context to improve audio-visual spatial reasoning when models ignore or hallucinate a modality.",
           "Created an evaluation pipeline on the SpatialSceneQA benchmark across 100 scenes and 5 task types that synthesizes spatial audio from room impulse responses and benchmarks Qwen3-Omni.",
@@ -83,12 +83,12 @@ const EXPERIENCE = [
         stack: ["PyTorch", "Qwen3-Omni", "Audio-visual LLMs"],
       },
       {
-        org: "Boston University", role: "Graduate Teaching Assistant, Computer Vision", when: "Current", where: "Boston, US", mark: "#ffd6e0",
+        org: "Boston University", logo: "https://www.google.com/s2/favicons?domain=bu.edu&sz=128", role: "Graduate Teaching Assistant, Computer Vision", when: "Current", where: "Boston, US", mark: "#ffd6e0",
         points: ["TA for the graduate Computer Vision course."],
         stack: [],
       },
       {
-        org: "MIDAS Lab, IIIT Delhi", role: "Research Assistant", when: "Aug 2023 to Jun 2025", where: "Delhi, India", mark: "#d7f5e6",
+        org: "MIDAS Lab, IIIT Delhi", logo: "https://www.google.com/s2/favicons?domain=iiitd.ac.in&sz=128", role: "Research Assistant", when: "Aug 2023 to Jun 2025", where: "Delhi, India", mark: "#d7f5e6",
         points: [
           "Implemented an automated caption-injection fine-tuning pipeline that generates image captions and feeds them alongside questions during LoRA training across LLaVA and InternVL at 7B to 13B scales.",
           "Extended the approach to a low-resource language by validating it on a 2,245-sample Hindi physics visual QA benchmark spanning 5 reasoning types.",
@@ -103,16 +103,6 @@ const EXPERIENCE = [
 /* Projects board. cover drives the drawn card art; set img to use a screenshot instead. */
 const PROJECTS = [
   {
-    id: "campus-emergency", title: "Campus Emergency Guidance app", sub: "BU Spark! · React Native + Supabase",
-    cats: ["product", "swe"], when: "Fall 2026", h: 330,
-    cover: { type: "app", bg: "#ffd6e0", accent: "#e60023", head: "Fire alarm in your building", rows: ["Nearest exit", "AED 40 ft", "Shelter in B1"] },
-    problem: "In an emergency nobody wants to dig through a PDF. People need the approved steps for the building they're in and the nearest AED, right away.",
-    built: ["React Native and Expo app on a Supabase Postgres backend.", "Geofencing that resolves your location to a BU building and surfaces the closest of 122 AEDs, with a fallback to the last known position after a 10 second GPS timeout.", "CI/CD with GitHub Actions running lint, type checks and tests on every build."],
-    impact: "Cut the path to the right safety instructions from 6 clicks to 2, built directly with BU Campus Planning and Operations.",
-    stack: ["React Native", "Expo", "Supabase", "PostgreSQL", "GitHub Actions"],
-    links: [["Repo", "https://github.com/BU-Spark/se-bu-campus-emergency"]],
-  },
-  {
     id: "notify", title: "Notify", sub: "Real-time collaborative notes",
     cats: ["product", "swe"], when: "May 2026 to Jun 2026", h: 250,
     cover: { type: "editor", bg: "#d8e9ff" },
@@ -120,17 +110,7 @@ const PROJECTS = [
     built: ["React and TypeScript editor synced over WebSockets with Yjs CRDTs.", "PostgreSQL persistence layer.", "Google OAuth 2.0 and JWT sessions securing both the REST endpoints and WebSocket connections."],
     impact: "Multi-user edits sync across clients in under a second.",
     stack: ["React", "TypeScript", "Node.js", "WebSockets", "Yjs", "PostgreSQL", "OAuth 2.0"],
-    links: [],
-  },
-  {
-    id: "kv-cache", title: "4× faster LLM serving with KV cache reuse", sub: "NVIDIA x SIT AI Center",
-    cats: ["swe", "ml"], when: "Summer 2026", h: 280,
-    cover: { type: "metric", bg: "#d7f5e6", value: "4×", label: "faster time to first token, 565ms to 143ms", spark: [9, 9, 8, 9, 6, 4, 3, 2.4, 2.2] },
-    problem: "Multi-agent LLM apps resend the same context over and over, and recomputing the KV cache every time makes responses slow.",
-    built: ["KV cache reuse and fusion pipeline that recomputes under 15% of token KV states.", "Overlapped GPU cache loading with recomputation to hide latency.", "Adaptive controller that sets per-request recompute ratios from KV divergence signals.", "Reproducible eval harness with bootstrap confidence intervals that caught a silent bug."],
-    impact: "Time to first token went from 565ms to 143ms and throughput rose 2.8 to 5× with no quality loss.",
-    stack: ["Python", "PyTorch", "LLM serving"],
-    links: [["Repo", "https://github.com/Sanjask/load-adaptive-kv-cache"]],
+    links: [["GitHub repo", "https://github.com/Sanjask/Notify-Doc"]],
   },
   {
     id: "holostream", title: "Event-driven LLM agent in HoloStream", sub: "Go · distributed stream processing",
@@ -160,7 +140,7 @@ const PROJECTS = [
     built: ["End-to-end pipeline for cleaning, feature engineering and evaluation.", "Benchmarked XGBoost against logistic regression, decision trees and random forests.", "Probability-based threshold tuning to catch more defaulters, with Pytest tests across the pipeline."],
     impact: "0.93 ROC-AUC.",
     stack: ["Python", "XGBoost", "scikit-learn", "Pytest"],
-    links: [["Repo", "https://github.com/DaneshBU/CS506-Project"]],
+    links: [["GitHub repo", "https://github.com/DaneshBU/CS506-Project"]],
   },
   {
     id: "storify", title: "Storify", sub: "Music that matches your mood",
@@ -170,7 +150,7 @@ const PROJECTS = [
     built: ["CNN emotion models in PyTorch.", "React frontend with a Flask API.", "Recommendations through the Spotify API, deployed with Docker."],
     impact: "Mood in, playlist out.",
     stack: ["React", "Flask", "PyTorch", "Spotify API", "Docker"],
-    links: [],
+    links: [["GitHub repo", "https://github.com/Sanjask/Storify"]],
   },
   {
     id: "echoweather", title: "EchoWeather", sub: "Native Android app in Kotlin",
@@ -178,7 +158,18 @@ const PROJECTS = [
     cover: { type: "weather", bg: "#bfe0ff" },
     problem: "", built: ["A native Android weather app built in Kotlin."], impact: "",
     stack: ["Kotlin", "Android"],
-    links: [["Repo", "https://github.com/Sanjask/WeatherApp"]],
+    links: [["GitHub repo", "https://github.com/Sanjask/WeatherApp"]],
+  },
+  {
+    // TODO: double-check this description
+    id: "legends-of-valor", title: "Legends of Valor", sub: "Turn-based strategy game in Java",
+    cats: ["swe"], when: "", h: 260,
+    cover: { type: "game", bg: "#ffe0cc" },
+    problem: "A turn-based board game where a party of heroes fights its way through lanes of monsters to reach the enemy base.",
+    built: ["Designed the game with object-oriented patterns so heroes, monsters, items and board tiles stay easy to extend.", "Built the turn loop, combat, inventory and market logic, playable from the terminal."],
+    impact: "",
+    stack: ["Java", "OOP", "Design patterns"],
+    links: [["GitHub repo", "https://github.com/Sanjask/LegendsOfValorFinalProject"]],
   },
   {
     id: "glucose", title: "Needle-free glucose monitor", sub: "Wearable · near-infrared",
@@ -188,13 +179,18 @@ const PROJECTS = [
     built: ["Wrist device reading about 18 near-infrared channels, sampling every 5 minutes over Bluetooth.", "I built the regression models against a commercial CGM as ground truth."],
     impact: "SVR reached an R² of about 0.70 on our first dataset.",
     stack: ["Python", "scikit-learn", "Hardware"],
-    links: [],
+    links: [["GitHub repo", "https://github.com/Sanjask/Non-Invasive-Glucose-Tracking"]],
   },
 ];
 
 const EDUCATION = [
-  { school: "Boston University", degree: "Master of Science, Computer Science", when: "Sep 2025 to Dec 2026", where: "Boston, US", note: "" },
-  { school: "Indraprastha Institute of Information Technology, Delhi", degree: "B.Tech, Computer Science and Engineering", when: "Sep 2021 to May 2025", where: "New Delhi, India", note: "Minor in Human-Centered Design" },
+  { school: "Boston University", logo: "https://www.google.com/s2/favicons?domain=bu.edu&sz=128", degree: "Master of Science, Computer Science", when: "Sep 2025 to Dec 2026", where: "Boston, US", note: "" },
+  { school: "Indraprastha Institute of Information Technology, Delhi", logo: "https://www.google.com/s2/favicons?domain=iiitd.ac.in&sz=128", degree: "B.Tech, Computer Science and Engineering", when: "Sep 2021 to May 2025", where: "New Delhi, India", note: "Minor in Human-Centered Design" },
+];
+
+const SCHOLARSHIPS = [
+  { amount: "$20,000", title: "Merit scholarship", school: "Boston University", detail: "Merit-based award for my master's in Computer Science", bg: "#ffd6e0" },
+  { amount: "50%", title: "Merit scholarship, all 4 years", school: "IIIT Delhi", detail: "Merit-based tuition scholarship for my entire undergrad", bg: "#fff1b8" },
 ];
 
 const PUBLICATIONS = [
@@ -215,9 +211,9 @@ const PUBLICATIONS = [
 ];
 
 const LIFE = [
-  { title: "Pinning since I was a kid", text: "Boards for everything", bg: "#e60023", ink: "#fff", h: 220 },
-  { title: "Volleyball", text: "Bump, set, ship", bg: "#fff1b8", h: 170 },
-  { title: "New music", text: "Always hunting for the next song on repeat", bg: "#e4dbff", h: 200 },
-  { title: "Head of Academics, IRC at IIIT Delhi", text: "Made student exchange way less confusing", bg: "#d8e9ff", h: 210 },
-  { title: "Teaching Computer Vision", text: "Office hours are debugging with better snacks", bg: "#ffd6e0", h: 190 },
+  // Drop a photo into img/life/ with the matching name and it replaces the illustration.
+  { title: "Volleyball", text: "Bump, set, spike", img: "img/life/volleyball.jpg", cover: "volleyball", bg: "#bfe0ff", h: 300 },
+  { title: "Music", text: "Always hunting for the next song on repeat", img: "img/life/music.jpg", cover: "music", bg: "#e4dbff", h: 250 },
+  { title: "Trekking", text: "The best views are the ones you climb for", img: "img/life/trekking.jpg", cover: "trek", bg: "#d7f5e6", h: 320 },
+  { title: "Visual design", text: "See my design work on Behance", img: "img/life/design.jpg", cover: "design", bg: "#ffd6e0", h: 270, link: "https://www.behance.net/sanjanaiiitd" },
 ];
