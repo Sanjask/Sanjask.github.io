@@ -25,7 +25,7 @@ const EXPERIENCE = [
     open: false,
     roles: [
       {
-        org: "BU Spark!", logo: "https://www.google.com/s2/favicons?domain=bu.edu&sz=128", role: "Software Engineer", when: "Sep 2026 to Present", where: "Boston, US", mark: "#ffd6e0",
+        org: "BU Spark!", logo: "img/logos/bu-spark.png", role: "Software Engineer", when: "Sep 2026 to Present", where: "Boston, US", mark: "#ffd6e0",
         points: [
           "Built a React Native and Supabase emergency app for BU Campus Planning and Operations, working directly with the client and UX team to cut the path to the right safety instructions from 6 clicks to 2.",
           "Implemented geofencing-based location detection to show nearby emergencies and the closest of 122 campus AEDs, falling back to the last known position after a 10 second GPS timeout.",
@@ -43,7 +43,7 @@ const EXPERIENCE = [
         stack: ["Python", "PyTorch", "LLM serving", "GPU"],
       },
       {
-        org: "National University of Singapore", logo: "https://www.google.com/s2/favicons?domain=nus.edu.sg&sz=128", role: "Software Engineer Intern", when: "Dec 2024 to May 2025", where: "Singapore", mark: "#d8e9ff",
+        org: "National University of Singapore", logo: "img/logos/nus.png", role: "Software Engineer Intern", when: "Dec 2024 to May 2025", where: "Singapore", mark: "#d8e9ff",
         points: [
           "Worked on an autonomous LLM agent for code repair that pairs GPT-4 with AST code search and iterative context retrieval, cutting LLM cost per task by 83% from $2.51 to $0.43.",
           "Engineered prompt pipelines that feed spectrum-based fault localization signals into the LLM context, raising the issue resolution rate to 19% on SWE-bench Lite and outperforming SWE-agent.",
@@ -52,7 +52,7 @@ const EXPERIENCE = [
         stack: ["Python", "GPT-4", "LLM agents"],
       },
       {
-        org: "Al-Muftah Group", role: "Software Development Intern", when: "May 2024 to Jun 2024", where: "Doha, Qatar", mark: "#fff1b8",
+        org: "Al-Muftah Group", logo: "img/logos/al-muftah.png", role: "Software Development Intern", when: "May 2024 to Jun 2024", where: "Doha, Qatar", mark: "#fff1b8",
         points: [
           "Delivered a full-stack sales analytics dashboard over 90K+ sales records across 20+ product categories, building the interface and data layer with React, SQL and REST APIs.",
           "Automated weekly sales reporting with backend data pipelines and optimized SQL queries, cutting manual reporting effort by 30%.",
@@ -60,7 +60,7 @@ const EXPERIENCE = [
         stack: ["React", "SQL", "REST APIs"],
       },
       {
-        org: "Avanceon", logo: "https://www.google.com/s2/favicons?domain=avanceon.com&sz=128", role: "Software Engineering Intern", when: "Dec 2023 to Jan 2024", where: "Doha, Qatar", mark: "#ece6ff",
+        org: "Avanceon", logo: "img/logos/avanceon.png", role: "Software Engineering Intern", when: "Dec 2023 to Jan 2024", where: "Doha, Qatar", mark: "#ece6ff",
         points: [
           "Built Python and SQL data processing for Qatar Metro signal data.", // TODO: add more detail
         ],
@@ -71,7 +71,7 @@ const EXPERIENCE = [
   {
     id: "research",
     title: "Research & Teaching",
-    blurb: "Multimodal ML research and teaching computer vision",
+    blurb: "Multimodal ML research and teaching CV, HCI and calculus",
     open: false,
     roles: [
       {
@@ -95,6 +95,16 @@ const EXPERIENCE = [
           "Improved accuracy by up to 8% on ScienceQA and nearly 15% for the smallest model on the Hindi benchmark, with the largest gains on weaker vision encoders.",
         ],
         stack: ["PyTorch", "LoRA", "LLaVA", "InternVL"],
+      },
+      {
+        org: "IIIT Delhi", logo: "https://www.google.com/s2/favicons?domain=iiitd.ac.in&sz=128", role: "Teaching Assistant, Multivariate Calculus", when: "Jan 2024 to May 2024", where: "Delhi, India", mark: "#fff1b8",
+        points: ["TA for the undergraduate Multivariate Calculus course."],
+        stack: [],
+      },
+      {
+        org: "IIIT Delhi", logo: "https://www.google.com/s2/favicons?domain=iiitd.ac.in&sz=128", role: "Teaching Assistant, Human-Computer Interaction", when: "Sep 2023 to Dec 2023", where: "Delhi, India", mark: "#d8e9ff",
+        points: ["TA for the undergraduate Human-Computer Interaction course."],
+        stack: [],
       },
     ],
   },
@@ -153,11 +163,18 @@ const PROJECTS = [
     links: [["GitHub repo", "https://github.com/Sanjask/Storify"]],
   },
   {
-    id: "echoweather", title: "EchoWeather", sub: "Native Android app in Kotlin",
-    cats: ["product", "swe"], when: "", h: 280,
+    id: "echoweather", title: "EchoWeather", sub: "Android weather app in Kotlin",
+    cats: ["product", "swe"], when: "Mobile Computing project", h: 300,
     cover: { type: "weather", bg: "#bfe0ff" },
-    problem: "", built: ["A native Android weather app built in Kotlin."], impact: "",
-    stack: ["Kotlin", "Android"],
+    problem: "Most weather apps tell you today's forecast but not how today compares to the past. I wanted one app for live weather, any city in the world and long-term temperature trends.",
+    built: [
+      "Home screen that finds your location with Google's FusedLocationProvider, handles runtime permissions and shows current, min and max temperature with day or night icons.",
+      "Search screen that turns any city or country into coordinates with Geocoder, validates input before calling the API and reuses the same API layer across screens.",
+      "History screen that pulls 10 years of temperatures, plots the trend with MPAndroidChart and compares today against the historical average with percentage change.",
+      "Networking with OkHttp, JSON parsing with Gson, Room for local storage and Open-Meteo as the data source.",
+    ],
+    impact: "Live weather, global search and a decade of climate trends in one Android app.",
+    stack: ["Kotlin", "Android", "OkHttp", "Gson", "Room", "MPAndroidChart", "REST APIs"],
     links: [["GitHub repo", "https://github.com/Sanjask/WeatherApp"]],
   },
   {
