@@ -74,7 +74,10 @@
   const P = PROFILE;
   $("#profile").innerHTML = `
     <figure class="hero-photo">
-      <img src="${esc(P.photo)}" alt="Sanjana">
+      <div class="photo-wrap">
+        <img id="me" src="${esc(P.photo)}" alt="Sanjana">
+        <button id="avatar-toggle" class="avatar-toggle" role="switch" aria-checked="false" aria-label="Switch photo style"><i></i></button>
+      </div>
       <figcaption><span class="status"><i></i>${esc(P.status)}</span></figcaption>
     </figure>
     <div class="hero-text">
@@ -93,6 +96,21 @@
       </div>
       <p class="contact-line">${esc(P.email)} · ${esc(P.location)}</p>
     </div>`;
+
+  /* photo / pixel avatar toggle, remembered in this browser */
+  const me = $("#me"), tog = $("#avatar-toggle");
+  function setAvatar(on) {
+    me.src = on ? P.avatar : P.photo;
+    me.alt = on ? "Sanjana's pixel avatar" : "Sanjana";
+    me.classList.toggle("pixel", on);
+    tog.setAttribute("aria-checked", on);
+    try { localStorage.setItem("sanjana.avatar", on ? "1" : "0"); } catch { /* storage off */ }
+  }
+  tog.addEventListener("click", () => {
+    me.classList.add("flip");
+    setTimeout(() => { setAvatar(tog.getAttribute("aria-checked") !== "true"); me.classList.remove("flip"); }, 160);
+  });
+  try { if (localStorage.getItem("sanjana.avatar") === "1") setAvatar(true); } catch { /* storage off */ }
 
   /* logo with a lettered fallback if the image file isn't there yet */
   const logo = (r, cls) => `<span class="${cls}" style="background:${r.mark}" aria-hidden="true">${r.logo ? `<img src="${esc(r.logo)}" alt="" onerror="this.remove()">` : ""}<b>${esc(r.org[0])}</b></span>`;

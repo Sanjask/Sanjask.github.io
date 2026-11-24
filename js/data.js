@@ -5,6 +5,7 @@
 const PROFILE = {
   name: "Sanjana",
   photo: "img/sanjana.jpg",
+  avatar: "img/avatar.png",
   heading: "Software engineer who builds for people.",
   about: "I'm at my best in product-facing roles, where understanding the user is just as important as writing the code. I work across the stack, from React frontends to backend pipelines to ML systems, and I own what I build all the way to production. For me, good engineering is software people actually want to use.",
   status: "Open to full-time roles starting January 2027",
@@ -60,9 +61,10 @@ const EXPERIENCE = [
         stack: ["React", "SQL", "REST APIs"],
       },
       {
-        org: "Avanceon", logo: "img/logos/avanceon.png", role: "Software Engineering Intern", when: "Dec 2023 to Jan 2024", where: "Doha, Qatar", mark: "#ece6ff",
+        org: "Avanceon QFZ", logo: "img/logos/avanceon.png", role: "Software Engineering Intern", when: "Dec 2023 to Jan 2024", where: "Doha, Qatar", mark: "#ece6ff",
         points: [
-          "Built Python and SQL data processing for Qatar Metro signal data.", // TODO: add more detail
+          "Built a Python and SQL data processing system to analyze 10M+ Qatar Metro traffic records and evaluate signal timing patterns across active rail tracks.",
+          "Implemented data pipelines and SQL-based validation workflows to test and deploy signal timing updates that contributed to a 30% reduction in peak-hour congestion.",
         ],
         stack: ["Python", "SQL"],
       },
