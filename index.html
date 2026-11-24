@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sanjana · Product Engineer</title>
+<meta name="description" content="Sanjana is a product engineer who builds products people use and the systems that keep them fast." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Caveat:wght@500;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #fdfcf8;
+    --rule: #dce8f3;
+    --margin: #f3b0ac;
+    --ink: #1f1a17;
+    --ink-soft: #5b534d;
+    --tomato: #e8432e;
+    --butter: #ffd95a;
+    --mint: #9fe0c1;
+    --sky: #8ec5ff;
+    --gum: #ffb8d2;
+    --lilac: #cdb8ff;
+    --display: "Bagel Fat One", system-ui, sans-serif;
+    --hand: "Caveat", cursive;
+    --body: "Figtree", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font: 17px/1.6 var(--body);
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(90deg, transparent 63px, var(--margin) 63px, var(--margin) 65px, transparent 65px),
+      repeating-linear-gradient(180deg, transparent 0 31px, var(--rule) 31px 32px);
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--tomato); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px 0 92px; }
+  @media (max-width: 720px) {
+    body { background-image: repeating-linear-gradient(180deg, transparent 0 31px, var(--rule) 31px 32px); }
+    .wrap { padding: 0 20px; }
+  }
+
+  /* nav */
+  nav.top {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(253,252,248,.92); backdrop-filter: blur(6px);
+    border-bottom: 2px solid var(--ink);
+  }
+  nav.top .wrap { display: flex; align-items: center; gap: 22px; height: 58px; }
+  .logo { font-family: var(--display); font-size: 22px; text-decoration: none; }
+  nav.top ul { list-style: none; display: flex; gap: 6px; margin: 0 0 0 auto; padding: 0; }
+  nav.top ul a { text-decoration: none; font-weight: 600; font-size: 15px; padding: 6px 12px; border-radius: 999px; }
+  nav.top ul a:hover { background: var(--butter); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 600 15px var(--body); text-decoration: none; cursor: pointer;
+    padding: 10px 18px; border: 2px solid var(--ink); border-radius: 999px;
+    background: var(--ink); color: var(--paper);
+    box-shadow: 3px 3px 0 var(--tomato); transition: transform .12s, box-shadow .12s;
+  }
+  .btn:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--tomato); }
+  .btn.ghost { background: var(--paper); color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+  @media (max-width: 720px) { nav.top ul { display: none; } nav.top .btn { margin-left: auto; } }
+
+  /* hero */
+  .hero { padding: 72px 0 96px; text-align: center; position: relative; }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; background: var(--mint); border: 2px solid var(--ink); border-radius: 999px; padding: 4px 14px; }
+  .status::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #13a35a; box-shadow: 0 0 0 3px rgba(19,163,90,.25); }
+  .name-stage { position: relative; display: inline-block; margin: 44px auto 28px; padding: 0 20px; }
+  .name {
+    font-family: var(--display); font-weight: 400;
+    font-size: clamp(72px, 15vw, 172px); line-height: .9; margin: 0; letter-spacing: -.01em;
+    color: var(--paper);
+    -webkit-text-stroke: 3px var(--ink);
+    text-shadow: 6px 6px 0 var(--tomato), 6px 6px 0 var(--ink);
+    paint-order: stroke fill;
+    animation: pop .7s cubic-bezier(.2,1.4,.4,1) both;
+  }
+  @keyframes pop { from { transform: scale(.85) rotate(-3deg); opacity: 0; } to { transform: none; opacity: 1; } }
+  .note {
+    position: absolute; font-family: var(--hand); font-size: 24px; font-weight: 700; line-height: 1.1;
+    white-space: nowrap; padding: 4px 12px; border: 2px solid var(--ink); border-radius: 6px;
+    animation: drop .5s ease-out both;
+  }
+  .note svg { position: absolute; width: 46px; height: 40px; stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; }
+  .n1 { top: -26px; left: -60px; background: var(--butter); transform: rotate(-6deg); animation-delay: .35s; }
+  .n1 svg { right: -44px; top: 14px; }
+  .n2 { top: -10px; right: -96px; background: var(--gum); transform: rotate(5deg); animation-delay: .5s; }
+  .n2 svg { left: -42px; top: 18px; transform: scaleX(-1); }
+  .n3 { bottom: -34px; left: -20px; background: var(--sky); transform: rotate(3deg); animation-delay: .65s; }
+  .n4 { bottom: -26px; right: -40px; background: var(--lilac); transform: rotate(-4deg); animation-delay: .8s; }
+  @keyframes drop { from { opacity: 0; translate: 0 -10px; } to { opacity: 1; translate: 0 0; } }
+  @media (max-width: 900px) { .note { position: static; display: inline-block; margin: 6px; } .note svg { display: none; } .notes-mobile { margin-top: 18px; } }
+  .tagline { font-size: clamp(22px, 3vw, 30px); font-weight: 600; line-height: 1.3; max-width: 22em; margin: 46px auto 30px; }
+  .hero .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* section headings */
+  section { padding: 72px 0; }
+  .h2 { font-family: var(--display); font-weight: 400; font-size: clamp(44px, 7vw, 76px); line-height: 1; margin: 0 0 8px; }
+  .scribble { font-family: var(--hand); font-size: 26px; color: var(--ink-soft); margin: 0 0 36px; }
+
+  /* tape + polaroid */
+  .tape { position: absolute; width: 92px; height: 26px; background: rgba(255,217,90,.75); border-left: 2px dashed rgba(0,0,0,.08); border-right: 2px dashed rgba(0,0,0,.08); z-index: 2; }
+  .polaroid { position: relative; background: #fff; padding: 12px 12px 44px; border: 1px solid #e6e1d8; box-shadow: 0 10px 24px rgba(60,40,20,.12); transform: rotate(-3deg); width: 260px; }
+  .polaroid .ph { aspect-ratio: 1; background: repeating-linear-gradient(45deg, var(--sky) 0 14px, #a7d2ff 14px 28px); display: grid; place-items: center; font-family: var(--hand); font-size: 22px; text-align: center; color: var(--ink); overflow: hidden; }
+  .polaroid .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .polaroid figcaption { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-family: var(--hand); font-size: 22px; }
+
+  /* about */
+  .about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: start; }
+  .about-grid .polaroid .tape { top: -12px; left: 84px; transform: rotate(-4deg); }
+  .bio-hand { font-family: var(--hand); font-size: 30px; line-height: 32px; margin: 0 0 24px; max-width: 26em; }
+  .bio { max-width: 38em; color: var(--ink-soft); }
+  .bio p { margin: 0 0 16px; }
+  .stickers { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 8px; }
+  .stickers + .stickers { margin-top: 10px; }
+  .sticker { font-weight: 600; font-size: 14px; padding: 5px 12px; border: 2px solid var(--ink); border-radius: 8px; background: #fff; box-shadow: 2px 2px 0 var(--ink); }
+  .stickers .lead { font-family: var(--hand); font-size: 22px; align-self: center; margin-right: 4px; }
+  .s-prod .sticker { background: var(--gum); }
+  .s-eng .sticker { background: var(--mint); }
+  .s-ml .sticker { background: var(--lilac); }
+  @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } .about-grid .polaroid { margin: 0 auto; } }
+
+  /* featured case studies */
+  .case { position: relative; display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; background: #fff; border: 2px solid var(--ink); border-radius: 18px; padding: 34px; margin-bottom: 48px; box-shadow: 8px 8px 0 var(--c, var(--butter)); }
+  .case:nth-child(even) .case-art { order: 2; }
+  .case .tape { top: -14px; left: 40px; transform: rotate(-5deg); }
+  .case:nth-child(even) .tape { left: auto; right: 40px; transform: rotate(4deg); background: rgba(255,184,210,.8); }
+  .case-art { border-radius: 12px; min-height: 300px; background: var(--c, var(--butter)); border: 2px solid var(--ink); display: grid; place-items: center; overflow: hidden; position: relative; }
+  .case h3 { font-family: var(--display); font-weight: 400; font-size: 38px; line-height: 1.05; margin: 0 0 6px; }
+  .role { font-family: var(--hand); font-size: 22px; color: var(--ink-soft); margin: 0 0 18px; }
+  .beat { margin: 0 0 14px; }
+  .beat b { font-family: var(--hand); font-size: 24px; font-weight: 700; display: block; line-height: 1; margin-bottom: 2px; }
+  .beat p { margin: 0; }
+  .beat.impact p { font-weight: 600; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 14px; }
+  .chip { font-size: 13px; font-weight: 600; padding: 2px 10px; border-radius: 999px; border: 1.5px solid var(--ink); }
+  .links a { font-weight: 600; margin-right: 16px; text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: var(--tomato); }
+  @media (max-width: 860px) { .case { grid-template-columns: 1fr; padding: 22px; } .case:nth-child(even) .case-art { order: 0; } .case-art { min-height: 220px; } }
+
+  /* art: phone */
+  .phone { width: 150px; height: 290px; background: var(--ink); border-radius: 26px; padding: 10px; transform: rotate(-6deg); box-shadow: 10px 12px 0 rgba(0,0,0,.18); }
+  .phone .scr { background: #fff; border-radius: 18px; height: 100%; padding: 16px 12px; display: flex; flex-direction: column; gap: 8px; }
+  .scr .alert { background: var(--tomato); color: #fff; border-radius: 10px; padding: 8px; font-size: 11px; font-weight: 700; line-height: 1.2; }
+  .scr .row { border: 1.5px solid var(--ink); border-radius: 8px; padding: 6px 8px; font-size: 10px; font-weight: 600; display: flex; justify-content: space-between; }
+  .scr .map { flex: 1; border-radius: 8px; background: radial-gradient(circle at 60% 45%, var(--tomato) 0 6px, transparent 7px), repeating-linear-gradient(0deg, #e8f0f7 0 12px, #fff 12px 14px), repeating-linear-gradient(90deg, #e8f0f7 0 12px, transparent 12px 14px); border: 1.5px solid var(--ink); }
+  /* art: collab doc */
+  .doc { width: 78%; background: #fff; border: 2px solid var(--ink); border-radius: 10px; padding: 18px; position: relative; transform: rotate(2deg); }
+  .doc .ln { height: 9px; border-radius: 4px; background: #e9e4dc; margin: 10px 0; }
+  .doc .ln.hl { background: var(--butter); }
+  .cursor { position: absolute; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 6px 6px 6px 0; border: 1.5px solid var(--ink); }
+  /* art: chart */
+  .bars { display: flex; align-items: end; gap: 28px; height: 220px; padding: 0 20px; }
+  .bar { width: 70px; border: 2px solid var(--ink); border-radius: 8px 8px 0 0; position: relative; }
+  .bar span { position: absolute; top: -34px; left: 50%; transform: translateX(-50%); font-family: var(--hand); font-size: 22px; font-weight: 700; white-space: nowrap; }
+  .bar em { position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); font-style: normal; font-size: 13px; font-weight: 600; white-space: nowrap; }
+
+  /* board */
+  .board-tools { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 30px; }
+  .search { flex: 1 1 260px; display: flex; align-items: center; gap: 10px; background: #efece6; border-radius: 999px; padding: 0 18px; height: 48px; border: 2px solid transparent; }
+  .search:focus-within { border-color: var(--ink); background: #fff; }
+  .search input { border: 0; background: transparent; font: 500 16px var(--body); flex: 1; outline: none; color: var(--ink); }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filters button { font: 600 15px var(--body); padding: 10px 16px; border-radius: 999px; border: 0; background: transparent; cursor: pointer; color: var(--ink); }
+  .filters button:hover { background: #efece6; }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .masonry { columns: 4 230px; column-gap: 18px; }
+  .pin { break-inside: avoid; margin: 0 0 22px; display: block; width: 100%; text-align: left; border: 0; padding: 0; background: none; cursor: zoom-in; font: inherit; color: inherit; }
+  .pin[hidden] { display: none; }
+  .pin .cover { position: relative; border-radius: 16px; overflow: hidden; border: 2px solid var(--ink); }
+  .pin .cover .shade { position: absolute; inset: 0; background: rgba(31,26,23,.42); opacity: 0; transition: opacity .15s; }
+  .pin:hover .shade, .pin:focus-visible .shade { opacity: 1; }
+  .save { position: absolute; top: 10px; right: 10px; z-index: 3; font: 700 14px var(--body); background: var(--tomato); color: #fff; border: 0; border-radius: 999px; padding: 9px 14px; opacity: 0; transition: opacity .15s; cursor: pointer; }
+  .pin:hover .save, .pin:focus-within .save, .save.on { opacity: 1; }
+  .save.on { background: var(--ink); }
+  .pin h4 { font-size: 15px; font-weight: 700; margin: 8px 4px 0; line-height: 1.3; }
+  .pin .sub { font-size: 13px; color: var(--ink-soft); margin: 2px 4px 0; }
+  .empty { display: none; font-family: var(--hand); font-size: 28px; text-align: center; padding: 30px; }
+  .empty.show { display: block; }
+
+  /* generated pin covers */
+  .cv { display: flex; flex-direction: column; justify-content: space-between; padding: 18px; color: var(--ink); }
+  .cv .big { font-family: var(--display); font-size: 30px; line-height: 1; }
+  .cv .hand { font-family: var(--hand); font-size: 22px; line-height: 1.1; }
+  .cv .stat { font-family: var(--display); font-size: 46px; line-height: .95; overflow-wrap: anywhere; }
+  .cv code { font: 600 12px/1.6 ui-monospace, Menlo, monospace; white-space: pre; display: block; background: rgba(255,255,255,.65); border-radius: 8px; padding: 10px; overflow: hidden; }
+  .wave { display: flex; align-items: center; gap: 4px; height: 70px; }
+  .wave i { flex: 1; background: var(--ink); border-radius: 3px; }
+  .mini-bars { display: flex; align-items: end; gap: 6px; height: 80px; }
+  .mini-bars i { flex: 1; background: var(--ink); border-radius: 4px 4px 0 0; }
+
+  /* timeline */
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 3px solid var(--ink); }
+  .timeline li { position: relative; padding: 0 0 26px 28px; }
+  .timeline li::before { content: ""; position: absolute; left: -10px; top: 6px; width: 15px; height: 15px; border-radius: 50%; background: var(--dot, var(--butter)); border: 2px solid var(--ink); }
+  .timeline .when { font-family: var(--hand); font-size: 22px; color: var(--ink-soft); line-height: 1; }
+  .timeline .what { font-weight: 700; font-size: 18px; }
+  .timeline .detail { color: var(--ink-soft); font-size: 16px; max-width: 40em; }
+
+  /* contact */
+  .contact { text-align: center; padding: 96px 0 120px; }
+  .bignote { position: relative; display: inline-block; max-width: 560px; background: var(--butter); border: 2px solid var(--ink); padding: 40px 40px 34px; transform: rotate(-1.5deg); box-shadow: 8px 8px 0 var(--ink); text-align: left; }
+  .bignote .tape { top: -14px; left: 50%; margin-left: -46px; background: rgba(159,224,193,.85); }
+  .bignote h2 { font-family: var(--display); font-weight: 400; font-size: clamp(42px, 7vw, 64px); line-height: 1; margin: 0 0 14px; }
+  .bignote p { font-family: var(--hand); font-size: 26px; line-height: 1.25; margin: 0 0 22px; }
+  .contact-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  footer { text-align: center; font-size: 14px; color: var(--ink-soft); padding: 0 0 40px; }
+
+  /* modal */
+  dialog { border: 2px solid var(--ink); border-radius: 20px; padding: 0; max-width: 760px; width: calc(100% - 32px); background: var(--paper); color: var(--ink); box-shadow: 10px 10px 0 var(--ink); }
+  dialog::backdrop { background: rgba(31,26,23,.55); }
+  dialog[open] { animation: zoom .2s ease-out; }
+  @keyframes zoom { from { transform: scale(.96); opacity: 0; } }
+  .m-grid { display: grid; grid-template-columns: 1fr 1.2fr; }
+  .m-grid .cover { border-right: 2px solid var(--ink); min-height: 100%; }
+  .m-body { padding: 30px 28px; }
+  .m-body h3 { font-family: var(--display); font-weight: 400; font-size: 34px; line-height: 1.05; margin: 0 0 4px; }
+  .close { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--ink); background: #fff; font-size: 20px; cursor: pointer; z-index: 2; }
+  @media (max-width: 640px) { .m-grid { grid-template-columns: 1fr; } .m-grid .cover { border-right: 0; border-bottom: 2px solid var(--ink); min-height: 200px; } }
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top">sanjana</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#board">Board</a></li>
+      <li><a href="#path">Path</a></li>
+    </ul>
+    <a class="btn ghost" href="#contact">Say hi</a>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <header class="hero wrap">
+    <div><span class="status">Open to full-time roles starting January 2027</span></div>
+    <div class="name-stage">
+      <span class="note n1">product engineer
+        <svg viewBox="0 0 46 40"><path d="M2 8 C 20 2, 34 12, 40 30"/><path d="M33 26 l7 5 l2 -8"/></svg>
+      </span>
+      <span class="note n2">full-stack + ML
+        <svg viewBox="0 0 46 40"><path d="M2 8 C 20 2, 34 12, 40 30"/><path d="M33 26 l7 5 l2 -8"/></svg>
+      </span>
+      <h1 class="name">Sanjana</h1>
+      <span class="note n3">sweats the edge cases</span>
+      <span class="note n4">pinning since forever</span>
+    </div>
+    <p class="tagline">I build products people actually use, and the systems underneath that keep them fast.</p>
+    <div class="actions">
+      <a class="btn" href="#work">See my work</a>
+      <!-- TODO: drop resume.pdf into the repo root -->
+      <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="wrap">
+    <h2 class="h2">About</h2>
+    <p class="scribble">the short version</p>
+    <div class="about-grid">
+      <figure class="polaroid">
+        <span class="tape"></span>
+        <!-- TODO: replace with <img src="me.jpg" alt="Sanjana smiling"> -->
+        <div class="ph">your photo<br/>goes here</div>
+        <figcaption>hi, that's me</figcaption>
+      </figure>
+      <div>
+        <p class="bio-hand">I like sitting in the room with the people who'll use a thing, then going off and building it properly. Front to back, data model to the last button state.</p>
+        <div class="bio">
+          <p>I'm finishing my MS in Computer Science at Boston University this December. Right now I lead backend and infrastructure on a campus safety app at BU Spark!, working directly with the client and the UX team every week. I also TA the Computer Vision course and do VLM research in BU's Image and Video Computing group.</p>
+          <p>This past summer I was a research intern at the NVIDIA x SIT AI Center, making LLM serving faster. Before that I spent about two years doing ML research at IIIT Delhi and minored in Human-Centered Design, which is where I learned to ask "who is this for" before "how do I build it".</p>
+          <p>Outside of work you'll find me playing volleyball, hunting for new music, or curating Pinterest boards. That last one explains the board further down.</p>
+        </div>
+        <div class="stickers s-prod"><span class="lead">product</span>
+          <span class="sticker">Client discovery</span><span class="sticker">Human-centered design</span><span class="sticker">Design handoff</span><span class="sticker">Prototyping</span>
+        </div>
+        <div class="stickers s-eng"><span class="lead">engineering</span>
+          <span class="sticker">TypeScript</span><span class="sticker">React / React Native</span><span class="sticker">Node.js</span><span class="sticker">Python</span><span class="sticker">Go</span><span class="sticker">Kotlin</span><span class="sticker">PostgreSQL</span><span class="sticker">Supabase</span><span class="sticker">WebSockets</span><span class="sticker">Docker</span><span class="sticker">CI/CD</span>
+        </div>
+        <div class="stickers s-ml"><span class="lead">ML</span>
+          <span class="sticker">PyTorch</span><span class="sticker">LLM serving</span><span class="sticker">QLoRA fine-tuning</span><span class="sticker">VLMs</span><span class="sticker">XGBoost</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section id="work" class="wrap">
+    <h2 class="h2">Featured work</h2>
+    <p class="scribble">three things I'd want to talk about in an interview</p>
+
+    <article class="case" style="--c: var(--gum)">
+      <span class="tape"></span>
+      <div class="case-art">
+        <div class="phone"><div class="scr">
+          <div class="alert">Fire alarm reported<br/>in your building</div>
+          <div class="row"><span>Nearest exit</span><span>40 ft</span></div>
+          <div class="row"><span>AED</span><span>Lobby</span></div>
+          <div class="map"></div>
+        </div></div>
+      </div>
+      <div>
+        <h3>Campus Emergency Guidance</h3>
+        <p class="role">BU Spark! · backend & infra lead · Fall 2026</p>
+        <div class="beat"><b>the problem</b><p>In an emergency nobody wants to dig through a PDF. People on campus need the right steps for the building they're actually standing in, right away.</p></div>
+        <div class="beat"><b>what I built</b><p>We're taking a high-fidelity design to a working mobile app. I own the Supabase data model, a pipeline so the client can update approved guidance without shipping a new release, location detection mapped to BU buildings, and CI/CD.</p></div>
+        <div class="beat impact"><b>how I work on it</b><p>One of two engineers. I meet with BU Campus Planning & Operations and the UX team directly, so product calls get made with the people who'll run it.</p></div>
+        <div class="chips"><span class="chip">React Native</span><span class="chip">Expo</span><span class="chip">Supabase</span><span class="chip">Postgres</span><span class="chip">CI/CD</span></div>
+        <div class="links"><a href="https://github.com/BU-Spark/se-bu-campus-emergency" target="_blank" rel="noopener">Repo</a></div>
+      </div>
+    </article>
+
+    <article class="case" style="--c: var(--sky)">
+      <span class="tape"></span>
+      <div class="case-art">
+        <div class="doc">
+          <span class="cursor" style="top:-14px; left:30%; background: var(--gum)">you</span>
+          <span class="cursor" style="top:52%; right:-20px; background: var(--mint)">teammate</span>
+          <div class="ln" style="width:60%; height:14px; background: var(--ink)"></div>
+          <div class="ln"></div><div class="ln hl" style="width:85%"></div><div class="ln"></div><div class="ln" style="width:70%"></div><div class="ln hl" style="width:45%"></div><div class="ln" style="width:90%"></div>
+        </div>
+      </div>
+      <div>
+        <h3>Notify</h3>
+        <p class="role">real-time collaborative notes</p>
+        <div class="beat"><b>the problem</b><p>Shared docs fall apart when two people type in the same spot at once. Edits get lost or someone gets locked out.</p></div>
+        <div class="beat"><b>what I built</b><p>A React and TypeScript editor backed by a Node.js sync server over WebSockets. Yjs CRDTs merge concurrent edits so everyone converges on the same doc, and Postgres keeps it around.</p></div>
+        <div class="beat impact"><b>what changed</b><p>Multiple people can edit live with no locks and no "someone else is editing" screen.</p></div>
+        <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">WebSockets</span><span class="chip">Yjs</span><span class="chip">PostgreSQL</span></div>
+        <!-- TODO: add repo / demo links -->
+        <div class="links"><a href="#" >Repo</a><a href="#">Live demo</a></div>
+      </div>
+    </article>
+
+    <article class="case" style="--c: var(--mint)">
+      <span class="tape"></span>
+      <div class="case-art">
+        <div class="bars">
+          <div class="bar" style="height:200px; background:#fff"><span>baseline</span><em>full recompute</em></div>
+          <div class="bar" style="height:50px; background: var(--butter)"><span>~4× faster</span><em>adaptive</em></div>
+        </div>
+      </div>
+      <div>
+        <h3>Load-adaptive KV-cache sharing</h3>
+        <p class="role">NVIDIA x SIT AI Center · research intern · Summer 2026</p>
+        <div class="beat"><b>the problem</b><p>Multi-agent LLM apps resend a lot of the same context. Recomputing the KV cache every time makes the first token slow, and the speedup tricks need hand-tuned settings.</p></div>
+        <div class="beat"><b>what I built</b><p>A serving layer over NVIDIA's Retail Shopping Assistant Blueprint. I reproduced CacheBlend, swept static recompute ratios, then built a controller that picks the ratio on its own and lands on the hand-tuned value without anyone tuning it.</p></div>
+        <div class="beat impact"><b>what changed</b><p>About 4× faster time to first token with no drop in answer quality (F1 parity on MuSiQue).</p></div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">LLM serving</span><span class="chip">A100s</span></div>
+        <div class="links"><a href="https://github.com/Sanjask/load-adaptive-kv-cache" target="_blank" rel="noopener">Repo</a></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- BOARD -->
+  <section id="board" class="wrap">
+    <h2 class="h2">The board</h2>
+    <p class="scribble">everything else I've built, researched, or poked at. tap a pin for details</p>
+    <div class="board-tools">
+      <label class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search my work: try “react” or “vlm”" aria-label="Search projects" />
+      </label>
+      <div class="filters" role="group" aria-label="Filter pins">
+        <button data-f="all" aria-pressed="true">All</button>
+        <button data-f="product" aria-pressed="false">Product</button>
+        <button data-f="systems" aria-pressed="false">Systems</button>
+        <button data-f="ml" aria-pressed="false">ML & research</button>
+        <button data-f="life" aria-pressed="false">Life</button>
+      </div>
+    </div>
+    <div class="masonry" id="masonry"></div>
+    <p class="empty" id="empty">Nothing pinned for that yet. Try another word.</p>
+  </section>
+
+  <!-- PATH -->
+  <section id="path" class="wrap">
+    <h2 class="h2">Path so far</h2>
+    <p class="scribble">most recent first</p>
+    <ol class="timeline">
+      <li style="--dot: var(--gum)"><div class="when">now</div><div class="what">Software Engineer, BU Spark!</div><div class="detail">Leading backend and infrastructure on the Campus Emergency Guidance app with BU Campus Planning & Operations.</div></li>
+      <li style="--dot: var(--lilac)"><div class="when">now</div><div class="what">Graduate TA, Computer Vision · Researcher, BU Image and Video Computing</div><div class="detail">VLM robustness research with Prof. Deepti Ghadiyaram.</div></li>
+      <li style="--dot: var(--mint)"><div class="when">summer 2026</div><div class="what">Research Intern, NVIDIA x SIT AI Center</div><div class="detail">LLM serving infrastructure and KV-cache optimization.</div></li>
+      <li style="--dot: var(--sky)"><div class="when">2024</div><div class="what">Software Development Intern, Al-Muftah Group, Doha</div><div class="detail">Built a full-stack sales analytics dashboard.</div></li>
+      <li style="--dot: var(--butter)"><div class="when">2023 to 2024</div><div class="what">Software Engineering Intern, Avanceon, Doha</div><div class="detail">Python and SQL pipelines for Qatar Metro signal data.</div></li>
+      <li style="--dot: var(--gum)"><div class="when">undergrad</div><div class="what">SWE Intern, National University of Singapore · ML Researcher, MIDAS Lab, IIIT Delhi</div><div class="detail">About two years of multimodal ML research, plus a minor in Human-Centered Design.</div></li>
+      <li style="--dot: var(--lilac)"><div class="when">dec 2026</div><div class="what">MS Computer Science, Boston University</div><div class="detail">Graduating this December.</div></li>
+    </ol>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact wrap">
+    <div class="bignote">
+      <span class="tape"></span>
+      <h2>Let's build something</h2>
+      <p>Hiring for a product-minded engineer? Working on something people love using? I'd really like to hear about it.</p>
+      <div class="contact-links">
+        <!-- TODO: fill in your email + LinkedIn -->
+        <a class="btn" href="mailto:you@example.com">Email me</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/Sanjask" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>Hand-built by Sanjana, hosted on GitHub Pages.</footer>
+
+<dialog id="modal" aria-labelledby="m-title">
+  <button class="close" aria-label="Close">×</button>
+  <div class="m-grid">
+    <div class="cover" id="m-cover"></div>
+    <div class="m-body">
+      <h3 id="m-title"></h3>
+      <p class="role" id="m-role"></p>
+      <div id="m-beats"></div>
+      <div class="chips" id="m-chips"></div>
+      <div class="links" id="m-links"></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ============================================================
+   EDIT YOUR PINS HERE.
+   tags: product | systems | ml | life  (used by the filters)
+   cover: phone | doc | stat | code | wave | bars | note | text
+   img: optional path to a screenshot, e.g. "img/storify.png"
+   h: cover height in px (varied heights give the masonry look)
+   ============================================================ */
+const PINS = [
+  { title: "Campus Emergency Guidance", sub: "BU Spark! · React Native + Supabase", tags: ["product","systems"], color: "var(--gum)", h: 300, cover: "phone",
+    role: "Backend & infra lead · Fall 2026",
+    problem: "People on campus need the right emergency steps for the building they're in, fast.",
+    built: "Supabase data model, a guidance update pipeline for the client, building-level location detection, and CI/CD.",
+    impact: "Working directly with BU Campus Planning & Operations and the UX team.",
+    stack: ["React Native","Expo","Supabase","Postgres"], links: [["Repo","https://github.com/BU-Spark/se-bu-campus-emergency"]] },
+  { title: "Notify", sub: "Real-time collaborative notes", tags: ["product","systems"], color: "var(--sky)", h: 220, cover: "doc",
+    role: "Full-stack",
+    problem: "Shared docs break when two people edit the same spot at once.",
+    built: "React + TypeScript editor, Node.js WebSocket sync server, Yjs CRDTs, Postgres persistence.",
+    impact: "Live multi-user editing with no locks.",
+    stack: ["React","TypeScript","Node.js","WebSockets","Yjs","PostgreSQL"], links: [] },
+  { title: "Load-adaptive KV-cache sharing", sub: "NVIDIA x SIT AI Center", tags: ["systems","ml"], color: "var(--mint)", h: 260, cover: "stat", stat: "~4×", statLabel: "faster time to first token",
+    role: "Research intern · Summer 2026",
+    problem: "Recomputing the KV cache for repeated context makes multi-agent LLM apps slow to respond.",
+    built: "Reproduced CacheBlend, swept static recompute ratios, built a controller that picks the ratio automatically.",
+    impact: "About 4× faster TTFT with F1 parity on MuSiQue.",
+    stack: ["Python","PyTorch","LLM serving"], links: [["Repo","https://github.com/Sanjask/load-adaptive-kv-cache"]] },
+  { title: "Storify", sub: "Music that matches your mood", tags: ["product","ml"], color: "var(--lilac)", h: 320, cover: "wave", label: "how are you feeling?",
+    role: "Team project · IIIT Delhi",
+    problem: "Music apps don't know how you feel right now.",
+    built: "A React + Flask web app that detects emotion with PyTorch CNN models and recommends matching tracks through the Spotify API. Deployed with Docker.",
+    impact: "Mood in, playlist out.",
+    stack: ["React","Flask","PyTorch","Spotify API","Docker"], links: [] },
+  { title: "VLMs can see rotation but can't reason about it", sub: "BU Image and Video Computing", tags: ["ml"], color: "var(--butter)", h: 240, cover: "stat", stat: "52 → 91%", statLabel: "rotation recognition accuracy",
+    role: "Research with Prof. Deepti Ghadiyaram",
+    problem: "Vision-language models fail at rotation even though their vision encoders keep that information.",
+    built: "Froze the vision encoder and QLoRA fine-tuned only the LLM decoder of Qwen2.5-VL-7B on about 3,200 sketch pairs, then tested across model families.",
+    impact: "Accuracy went from 52.5% to 91%, with a clean per-angle curve validated across three model families.",
+    stack: ["PyTorch","QLoRA","Qwen2.5-VL","InternVL"], links: [] },
+  { title: "Event-driven LLM agent", sub: "HoloStream · in progress", tags: ["systems"], color: "#f2efe9", h: 230, cover: "code",
+    code: "on alert(incident):\n  ctx = telemetry.fetch()\n  plan = agent.react(ctx)\n  root = plan.root_cause()\n  eval(root, ground_truth)",
+    role: "CS551 team project · Fall 2026",
+    problem: "Can a stateful LLM agent running inside a streaming system find the root cause of an incident?",
+    built: "I own the dataset, incident workload, telemetry tools, and evaluation against ground-truth root causes on RCAEval.",
+    impact: "In progress.",
+    stack: ["Go","Streaming","LLM agents"], links: [] },
+  { title: "Credit risk detection", sub: "Loan default prediction", tags: ["ml"], color: "var(--gum)", h: 210, cover: "stat", stat: "0.93", statLabel: "ROC-AUC with XGBoost",
+    role: "BU CS506 · Spring 2026",
+    problem: "Defaults are rare, so a naive model just says everyone pays back.",
+    built: "A probability threshold tuning system for class imbalance and an automated end-to-end pipeline with pytest tests. Benchmarked XGBoost against logistic regression, decision trees, and random forests.",
+    impact: "0.93 ROC-AUC.",
+    stack: ["Python","XGBoost","pytest"], links: [["Repo","https://github.com/DaneshBU/CS506-Project"]] },
+  { title: "EchoWeather", sub: "Android weather app", tags: ["product"], color: "var(--sky)", h: 280, cover: "text", big: "72°", label: "light rain later. bring a jacket",
+    role: "Solo project",
+    problem: "A weather app that tells you what to do, not just numbers.",
+    built: "A native Android app in Kotlin.",
+    impact: "Where I learned Kotlin and Android.",
+    stack: ["Kotlin","Android"], links: [["Repo","https://github.com/Sanjask/WeatherApp"]] },
+  { title: "CapSFT · MM-HiPhyQA", sub: "Paper · ACM LAVA '25", tags: ["ml"], color: "#fff", h: 250, cover: "text", big: "paper", label: "caption-aware fine-tuning for smaller VLMs",
+    role: "Co-author",
+    problem: "Small vision-language models struggle with scientific questions.",
+    built: "Fine-tuning that feeds an image caption alongside the question, plus a Hindi physics VQA dataset. I worked on the fine-tuning and model experiments.",
+    impact: "Published as a workshop paper.",
+    stack: ["VLMs","Fine-tuning","Datasets"], links: [] },
+  { title: "Mathify", sub: "LLM math problem solving", tags: ["ml"], color: "var(--lilac)", h: 200, cover: "text", big: "∑ x²", label: "built the MathQuest dataset",
+    role: "Co-author · MIDAS Lab, IIIT Delhi",
+    problem: "LLMs stumble on school-level math word problems.",
+    built: "I created MathQuest, a dataset built from NCERT textbook problems.",
+    impact: "Published paper.",
+    stack: ["LLMs","Datasets"], links: [] },
+  { title: "Needle-free glucose monitor", sub: "Wearable · NIR spectroscopy", tags: ["ml","product"], color: "var(--mint)", h: 270, cover: "bars",
+    role: "Team project · I built the ML",
+    problem: "Finger pricks are painful, so people check less often than they should.",
+    built: "A wrist device reading about 18 near-infrared channels. I built the regression models against a commercial CGM as ground truth.",
+    impact: "SVR reached R² of about 0.70 on our first dataset. Scaling up taught me a lot about overfitting on small data.",
+    stack: ["Python","scikit-learn","Hardware"], links: [] },
+  { title: "Sales analytics dashboard", sub: "Al-Muftah Group, Doha", tags: ["product","systems"], color: "var(--butter)", h: 190, cover: "bars",
+    role: "Software Development Intern · 2024",
+    problem: "Sales data lived in spreadsheets nobody wanted to open.",
+    built: "A full-stack analytics dashboard.",
+    impact: "One place to see how sales were going.",
+    stack: ["Full-stack"], links: [] },
+  { title: "Qatar Metro signal data", sub: "Avanceon, Doha", tags: ["systems"], color: "#f2efe9", h: 180, cover: "code",
+    code: "SELECT line, AVG(delay)\nFROM signals\nGROUP BY line;",
+    role: "Software Engineering Intern · 2023 to 2024",
+    problem: "Raw metro signal data needed to become something engineers could use.",
+    built: "Python and SQL data processing pipelines.",
+    impact: "Cleaner signal data for the team.",
+    stack: ["Python","SQL"], links: [] },
+  { title: "Teaching Computer Vision", sub: "Graduate TA · BU", tags: ["life","ml"], color: "var(--gum)", h: 170, cover: "note", label: "office hours are my favorite debugging sessions" },
+  { title: "Head of Academics, IRC", sub: "IIIT Delhi", tags: ["life","product"], color: "var(--sky)", h: 190, cover: "note", label: "made the student exchange process way less painful",
+    role: "Student leadership",
+    problem: "Student exchange applications were confusing for students and the department.",
+    built: "Worked with IIITD's academic team to streamline the process end to end.",
+    impact: "A smoother exchange process on both sides." },
+  { title: "Pinning since I was a kid", sub: "Probably why this site looks like this", tags: ["life"], color: "var(--tomato)", h: 230, cover: "note", label: "Pinterest boards for everything" },
+  { title: "Volleyball", sub: "When I'm not at a keyboard", tags: ["life"], color: "var(--butter)", h: 160, cover: "note", label: "bump, set, ship" },
+];
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+
+function coverHTML(p, h) {
+  const style = `background:${p.color}; height:${h}px;`;
+  if (p.img) return `<div class="cv" style="${style}; padding:0"><img src="${esc(p.img)}" alt="" style="width:100%;height:100%;object-fit:cover"></div>`;
+  switch (p.cover) {
+    case "phone": return `<div class="cv" style="${style}; align-items:center; justify-content:center"><div class="phone" style="width:110px;height:210px;border-radius:20px;padding:7px"><div class="scr" style="border-radius:14px;padding:10px 8px;gap:6px"><div class="alert" style="font-size:9px">Severe weather alert</div><div class="row" style="font-size:8px"><span>Shelter</span><span>B1</span></div><div class="map"></div></div></div></div>`;
+    case "doc": return `<div class="cv" style="${style}; align-items:center; justify-content:center"><div class="doc" style="width:82%;padding:12px"><span class="cursor" style="top:-12px;left:20%;background:var(--gum)">you</span><div class="ln" style="width:55%;height:10px;background:var(--ink)"></div><div class="ln"></div><div class="ln hl" style="width:80%"></div><div class="ln" style="width:65%"></div></div></div>`;
+    case "stat": return `<div class="cv" style="${style}"><div class="hand">${esc(p.statLabel)}</div><div class="stat">${esc(p.stat)}</div></div>`;
+    case "code": return `<div class="cv" style="${style}; justify-content:center"><code>${esc(p.code)}</code></div>`;
+    case "wave": { const bars = Array.from({length: 22}, (_, i) => `<i style="height:${20 + Math.round(70 * Math.abs(Math.sin(i * 1.7)))}%"></i>`).join(""); return `<div class="cv" style="${style}"><div class="hand">${esc(p.label)}</div><div class="wave">${bars}</div><div class="big">♪ calm</div></div>`; }
+    case "bars": { const bars = [35,60,45,80,55,90,70].map(v => `<i style="height:${v}%"></i>`).join(""); return `<div class="cv" style="${style}"><div class="hand">${esc(p.sub)}</div><div class="mini-bars">${bars}</div></div>`; }
+    case "note": return `<div class="cv" style="${style}; justify-content:center"><div class="hand" style="font-size:28px">${esc(p.label)}</div></div>`;
+    default: return `<div class="cv" style="${style}"><div class="big" style="font-size:44px">${esc(p.big)}</div><div class="hand">${esc(p.label)}</div></div>`;
+  }
+}
+
+const masonry = document.getElementById("masonry");
+masonry.innerHTML = PINS.map((p, i) => `
+  <button class="pin" data-i="${i}" data-tags="${p.tags.join(" ")}" aria-label="${esc(p.title)}: open details">
+    <div class="cover">${coverHTML(p, p.h)}<div class="shade"></div>
+      <span class="save" role="button" tabindex="0" aria-pressed="false">Save</span>
+    </div>
+    <h4>${esc(p.title)}</h4><p class="sub">${esc(p.sub)}</p>
+  </button>`).join("");
+
+/* filters + search */
+let filter = "all";
+const q = document.getElementById("q");
+function apply() {
+  const term = q.value.trim().toLowerCase();
+  let shown = 0;
+  masonry.querySelectorAll(".pin").forEach(el => {
+    const p = PINS[el.dataset.i];
+    const hay = [p.title, p.sub, p.role, p.problem, p.built, (p.stack || []).join(" "), p.tags.join(" ")].join(" ").toLowerCase();
+    const ok = (filter === "all" || p.tags.includes(filter)) && (!term || hay.includes(term));
+    el.hidden = !ok; if (ok) shown++;
+  });
+  document.getElementById("empty").classList.toggle("show", shown === 0);
+}
+document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
+  filter = b.dataset.f;
+  document.querySelectorAll(".filters button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  apply();
+}));
+q.addEventListener("input", apply);
+
+/* save toggle (just for fun) */
+function toggleSave(s) { const on = s.classList.toggle("on"); s.textContent = on ? "Saved" : "Save"; s.setAttribute("aria-pressed", on); }
+masonry.addEventListener("click", e => {
+  const s = e.target.closest(".save");
+  if (s) { e.stopPropagation(); toggleSave(s); return; }
+  const pin = e.target.closest(".pin"); if (pin) openPin(PINS[pin.dataset.i]);
+});
+masonry.addEventListener("keydown", e => {
+  const s = e.target.closest(".save");
+  if (s && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); e.stopPropagation(); toggleSave(s); }
+});
+
+/* modal */
+const modal = document.getElementById("modal");
+function openPin(p) {
+  document.getElementById("m-cover").innerHTML = coverHTML(p, 360).replace(`height:360px;`, "height:100%; min-height:260px;");
+  document.getElementById("m-title").textContent = p.title;
+  document.getElementById("m-role").textContent = p.role || p.sub;
+  const beats = [["the problem", p.problem], ["what I built", p.built], ["what changed", p.impact]].filter(b => b[1]);
+  document.getElementById("m-beats").innerHTML = beats.length
+    ? beats.map(([k, v], i) => `<div class="beat${i === 2 ? " impact" : ""}"><b>${k}</b><p>${esc(v)}</p></div>`).join("")
+    : `<p>${esc(p.label)}</p>`;
+  document.getElementById("m-chips").innerHTML = (p.stack || []).map(s => `<span class="chip">${esc(s)}</span>`).join("");
+  document.getElementById("m-links").innerHTML = (p.links || []).map(([t, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`).join("");
+  modal.showModal();
+}
+modal.querySelector(".close").addEventListener("click", () => modal.close());
+modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
+</script>
+</body>
+</html>
