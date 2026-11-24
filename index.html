@@ -3,33 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sanjana · Product Engineer</title>
-  <meta name="description" content="Sanjana is a product engineer who builds products people use and the systems that keep them fast." />
-  <meta property="og:title" content="Sanjana · Product Engineer" />
-  <meta property="og:description" content="Projects, case studies and research, laid out as a board." />
+  <title>Sanjana · Software Engineer</title>
+  <meta name="description" content="Sanjana is a software engineer who builds for people: full stack, LLM systems and ML." />
+  <meta property="og:title" content="Sanjana · Software Engineer" />
+  <meta property="og:description" content="Software engineer who builds for people." />
+  <meta property="og:image" content="img/sanjana.jpg" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23e60023'/><text x='16' y='22' font-family='Arial' font-weight='700' font-size='18' fill='white' text-anchor='middle'>S</text></svg>" />
   <link rel="stylesheet" href="css/styles.css" />
   <script src="js/data.js" defer></script>
   <script src="js/app.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#app">Skip to content</a>
+  <a class="skip" href="#main">Skip to content</a>
+
   <header class="top">
-    <a class="logo" href="#/" aria-label="Home">S</a>
-    <nav class="nav" aria-label="Main">
-      <a href="#/" data-nav="home">Home</a>
-      <a href="#/profile" data-nav="profile">About</a>
+    <a class="logo" href="#top" aria-label="Back to top">S</a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#publications">Publications</a>
+      <a href="#life">Life</a>
     </nav>
-    <form id="search-form" class="search" role="search">
-      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="m20 20-3.6-3.6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
-      <input id="search" type="search" placeholder="Search my work, like React, LLM serving or Go" aria-label="Search projects" autocomplete="off" />
-      <kbd aria-hidden="true">/</kbd>
-    </form>
-    <a class="top-resume" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
-    <a class="top-avatar" href="#/profile" aria-label="Sanjana's profile">S</a>
+    <a class="btn btn-red btn-sm top-cta" href="mailto:sanjanasanjeev118@gmail.com">Say hi</a>
   </header>
-  <main id="app" tabindex="-1"></main>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <noscript><p style="padding:24px">This site needs JavaScript to show the board. You can still reach me on <a href="https://github.com/Sanjask">GitHub</a>.</p></noscript>
+
+  <main id="main">
+    <section id="top" class="profile" aria-label="Profile"><div id="profile"></div></section>
+
+    <section id="experience" class="sec">
+      <div class="sec-head"><h2>Experience</h2><p>Tap a group to open or close it.</p></div>
+      <div id="experience-list" class="groups"></div>
+    </section>
+
+    <section id="projects" class="sec sec-wide">
+      <div class="sec-head"><h2>Projects</h2><p>Tap any pin for the full story.</p></div>
+      <div id="filters" class="chips" role="group" aria-label="Filter projects">
+        <button data-f="all" aria-pressed="true">All</button>
+        <button data-f="product" aria-pressed="false">Product</button>
+        <button data-f="swe" aria-pressed="false">Software</button>
+        <button data-f="ml" aria-pressed="false">ML</button>
+      </div>
+      <div id="board" class="feed"></div>
+    </section>
+
+    <section id="education" class="sec">
+      <div class="sec-head"><h2>Education</h2></div>
+      <div id="education-list" class="edu-list"></div>
+    </section>
+
+    <section id="publications" class="sec">
+      <div class="sec-head"><h2>Publications</h2></div>
+      <div id="publications-list" class="pubs"></div>
+    </section>
+
+    <section id="life" class="sec sec-wide">
+      <div class="sec-head"><h2>Life</h2><p>The stuff outside the editor.</p></div>
+      <div id="life-board" class="feed feed-life"></div>
+    </section>
+
+    <footer class="foot">
+      <p>Let's build something people want to use.</p>
+      <a class="btn btn-red" href="mailto:sanjanasanjeev118@gmail.com">Email me</a>
+      <small>Hand-built with plain HTML, CSS and JavaScript. No frameworks.</small>
+    </footer>
+  </main>
+
+  <dialog id="project" aria-labelledby="project-title">
+    <button id="project-close" class="close" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+    </button>
+    <div id="project-body" class="d-grid"></div>
+  </dialog>
+
+  <noscript><p style="padding:24px">This page needs JavaScript. Reach me at sanjanasanjeev118@gmail.com.</p></noscript>
 </body>
 </html>
